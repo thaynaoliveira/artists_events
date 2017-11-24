@@ -1,0 +1,1 @@
+Blank project of React and Redux.
