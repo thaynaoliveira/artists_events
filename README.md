@@ -1,1 +1,1 @@
-Blank project of React and Redux.
+# artists_events
