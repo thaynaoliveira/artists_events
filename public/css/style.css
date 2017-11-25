@@ -67,6 +67,67 @@ footer{
     cursor: pointer;
 }
 
+.flex-300, .flex-250{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    resize: vertical;
+}
+
+.flex-300{
+    height: 300px;
+}
+
+.flex-250{
+    height: 250px;
+}
+
+.btn{
+    padding: 6px 20px !important;
+}
+
+.header-presentation img{
+    width: 60px;
+    margin-bottom: 8px;
+}
+
+.mockup-info{
+    background-color: #f3f3f3;
+}
+
+.mockup-info span{
+    font-size: 16px;
+}
+
+.mockup-info p{
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.header-presentation span{
+    font-size: 24px;
+    color: white;
+    margin-left: 10px;
+    vertical-align: bottom;
+}
+
+.btn-purple{
+    background-color: #7F007F !important;
+    color: white;
+}
+
+.btn-purple:hover, .btn-purple:focus, .btn-purple.focus{
+    background-color: #BF00BF !important;
+}
+
+.background-header{
+    background: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
 @media (max-width: 768px) {
     footer{
         bottom: -120px;    
