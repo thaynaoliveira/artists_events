@@ -111,12 +111,12 @@ footer{
     vertical-align: bottom;
 }
 
-.btn-purple{
+.btn-purple, .swal-button{
     background-color: #7F007F !important;
     color: white;
 }
 
-.btn-purple:hover, .btn-purple:focus, .btn-purple.focus{
+.btn-purple:hover, .btn-purple:focus, .btn-purple.focus, .swal-button:hover, .swal-button:focus, .swal-button.focus{
     background-color: #BF00BF !important;
 }
 

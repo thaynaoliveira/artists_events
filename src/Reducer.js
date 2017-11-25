@@ -1,9 +1,13 @@
 import { EVENTS,
-		 ARTIST } from './Actions';
+		 ARTIST,
+		 ARTIST_ERROR,
+		 EVENTS_ERROR } from './Actions';
 
 const initialState = {
 	artist: {},
-	events: []
+	events: [],
+	artistError: false,
+	eventsError: false
 };
 
 export default function config(state=initialState, action){
@@ -15,7 +19,13 @@ export default function config(state=initialState, action){
 		case EVENTS:
 			return Object.assign({}, state, {events: action.data});
 			break;
-	}
+		case ARTIST_ERROR:
+			return Object.assign({}, state, {artistError: action.data});
+			break;
+		case EVENTS_ERROR:
+			return Object.assign({}, state, {eventsError: action.data});
+			break;
+}
 
     return state;
 }

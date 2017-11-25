@@ -2,6 +2,8 @@ import request from 'axios';
 
 export const ARTIST = 'ARTIST';
 export const EVENTS = 'EVENTS';
+export const ARTIST_ERROR = 'ARTIST_ERROR';
+export const EVENTS_ERROR = 'EVENTS_ERROR';
 
 const url = 'https://rest.bandsintown.com/';
 const app_id = 'test';
@@ -11,8 +13,18 @@ export function getArtist(name){
 
     return dispatch => { request.get( url + 'artists/' + artistName + '?app_id=' + app_id)
                         .then( response =>{ 
-                            setStorage(ARTIST, JSON.stringify(response.data))
-                        	dispatch(setReducer(ARTIST, response.data)); 
+                            if(response.data.name){
+                                setStorage(ARTIST, JSON.stringify(response.data))
+                                dispatch(setReducer(ARTIST, response.data)); 
+                                dispatch(getEventsArtist(response.data.name));
+                            } else {
+                                dispatch(setReducer(ARTIST_ERROR, true)); 
+                                dispatch(setReducer(ARTIST, {})); 
+                            }
+                        })
+                        .catch( error => {
+                            dispatch(setReducer(ARTIST_ERROR, true)); 
+                            dispatch(setReducer(ARTIST, {})); 
                         });
     }
 }
@@ -22,9 +34,19 @@ export function getEventsArtist(name){
     
     return dispatch => { request.get( url + 'artists/' + artistName + '/events?app_id=' + app_id)
                         .then( response =>{ 
-                            setStorage(EVENTS, JSON.stringify(response.data))
-                        	dispatch(setReducer(EVENTS, response.data)); 
+                            if(response.data.length > 0){
+                                setStorage(EVENTS, JSON.stringify(response.data))
+                                dispatch(setReducer(EVENTS, response.data)); 
+                            } else {
+                                dispatch(setReducer(EVENTS_ERROR, true)); 
+                                dispatch(setReducer(EVENTS, [])); 
+                            }
+                        })
+                        .catch( error => {
+                            dispatch(setReducer(EVENTS_ERROR, true)); 
+                            dispatch(setReducer(EVENTS, [])); 
                         });
+;
     }
 }
 
@@ -38,7 +60,7 @@ export function populateArtist(){
     }
 }
 
-function setReducer(type, data){
+export function setReducer(type, data){
 	return{
 		type: type,
 		data: data

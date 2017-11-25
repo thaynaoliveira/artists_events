@@ -1,32 +1,51 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import shallowCompare from 'react-addons-shallow-compare';
-import { getArtist, getEventsArtist, populateArtist } from "../Actions";
+import { getArtist, populateArtist, setReducer, ARTIST_ERROR, EVENTS_ERROR } from "../Actions";
+import swal from 'sweetalert';
 
 class Header extends Component {
 
     constructor(props){
         super(props);
         this.state = {artistName: ""};
-	}
-	
+    }
+    
+    shouldComponentUpdate(nextProps, nextState) {
+        if(nextProps.artistError){
+            swal("Sorry, we didn't find any artist, please search again!");
+            let {dispatch} = this.props;
+            dispatch(setReducer(ARTIST_ERROR, false)); 
+        }
+
+        if(nextProps.eventsError){
+            swal("Sorry, we didn't find any " + this.state.artistName + "'s event, but look some informations below.");
+            let {dispatch} = this.props;
+            dispatch(setReducer(EVENTS_ERROR, false)); 
+        }
+
+        return shallowCompare(this, nextProps, nextState);
+    }
+
 	findArtist(e){
         e.preventDefault();
 		let name = this.state.artistName;
 		let cacheArtist = window.localStorage.getItem("ARTIST");
-		let {dispatch} = this.props;
-		if(cacheArtist){
-			let artist = JSON.parse(cacheArtist);
-			if(artist.name.toLowerCase() == name.toLowerCase()){
-				dispatch(populateArtist());
-			} else {
-				dispatch(getArtist(name));
-				dispatch(getEventsArtist(name));
-			}
-		} else {
-			dispatch(getArtist(name));
-			dispatch(getEventsArtist(name));
-		}
+        if(name){
+            let {dispatch} = this.props;
+            if(cacheArtist){
+                let artist = JSON.parse(cacheArtist);
+                if(artist.name.toLowerCase() == name.toLowerCase()){
+                    dispatch(populateArtist());
+                } else {
+                    dispatch(getArtist(name));
+                }
+            } else {
+                dispatch(getArtist(name));
+            }
+        } else {
+            swal('Please, type the artist name!');
+        }
 	}
 
 	setValue(field, e){
@@ -72,7 +91,9 @@ class Header extends Component {
 function mapStateToProps(state) {
     return {
 		artist: state.artist,
-		events: state.events
+        events: state.events,
+        artistError: state.artistError,
+        eventsError: state.eventsError
     };
 }
 
