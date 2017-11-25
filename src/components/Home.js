@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import shallowCompare from 'react-addons-shallow-compare';
 import Header from './Header';
 import MockupInfo from './MockupInfo';
+import Artist from './Artist';
 
 class Home extends Component {
 	render() {
@@ -10,7 +11,7 @@ class Home extends Component {
 			<div>
 				<Header/>
 				{ this.props.artist.name ? 
-					<div>artista</div> : 
+					<Artist/> : 
 					<MockupInfo/> 
 				}
 			</div>		

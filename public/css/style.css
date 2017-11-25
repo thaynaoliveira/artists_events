@@ -86,12 +86,56 @@ footer{
     padding: 6px 20px !important;
 }
 
+.txt-purple{
+    color: #7F007F;
+}
+
 .header-presentation img{
     width: 60px;
     margin-bottom: 8px;
 }
 
-.mockup-info{
+.events{
+    padding: 0 15px;
+}
+
+.event-list{
+    margin-top: 10px;
+}
+
+.event-item{
+    background-color: white;
+    border-bottom: 1px solid #7F007F;
+    padding: 5px;
+    min-height: 45px;
+}
+
+.event-item span{
+    margin-top: 3px;
+}
+
+.event-item img{
+    margin-left: 5px;
+}
+
+.event-hidden{
+    display: none;
+}
+
+.btn-show-all{
+    margin-top: 10px;
+}
+
+.date-border{
+    border-right: 1px solid #7F007F;
+    padding-right: 5px;
+    margin-right: 5px;
+    padding: 5px 5px 5px 0px;
+    width: 100px;
+    display: inline-block;
+}
+
+.mockup-info, .background-grey{
     background-color: #f3f3f3;
 }
 
@@ -109,6 +153,38 @@ footer{
     color: white;
     margin-left: 10px;
     vertical-align: bottom;
+}
+
+.purple-border-content{
+    border: 1px solid #7F007F;
+    padding:0px !important;
+}
+
+.artist-avatar{
+    width: 100%;
+}
+
+.artist-info{
+    background-color: white;
+    padding: 10px;
+}
+
+.artist-info img{
+    width: 18px;
+    border-radius: 0px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.artist-info span{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.artist-info p{
+    color: #444;
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
 .btn-purple, .swal-button{
@@ -131,5 +207,24 @@ footer{
 @media (max-width: 768px) {
     footer{
         bottom: -120px;    
+    }
+
+    .btn-tickets{
+        display: block !important;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .events{
+        padding: 0px;
+    }
+
+    .event-item span{
+        display: inline-block;
+        border: 0px;
+    }
+    
+    .purple-border-content{
+        margin-bottom: 10px;
     }
 }

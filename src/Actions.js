@@ -8,12 +8,11 @@ export const EVENTS_ERROR = 'EVENTS_ERROR';
 const url = 'https://rest.bandsintown.com/';
 const app_id = 'test';
 
-export function getArtist(name){
-    let artistName = adjustName(name);
-
+export function getArtist(artistName){
     return dispatch => { request.get( url + 'artists/' + artistName + '?app_id=' + app_id)
                         .then( response =>{ 
                             if(response.data.name){
+                                setStorage(ARTIST, JSON.stringify(response.data))
                                 setStorage(ARTIST, JSON.stringify(response.data))
                                 dispatch(setReducer(ARTIST, response.data)); 
                                 dispatch(getEventsArtist(response.data.name));
@@ -29,22 +28,21 @@ export function getArtist(name){
     }
 }
 
-export function getEventsArtist(name){
-    let artistName = adjustName(name);
-    
+export function getEventsArtist(artistName){    
     return dispatch => { request.get( url + 'artists/' + artistName + '/events?app_id=' + app_id)
                         .then( response =>{ 
                             if(response.data.length > 0){
-                                setStorage(EVENTS, JSON.stringify(response.data))
+                                setStorage(EVENTS, JSON.stringify(response.data));
+                                window.localStorage.removeItem('EVENTS');
                                 dispatch(setReducer(EVENTS, response.data)); 
                             } else {
-                                dispatch(setReducer(EVENTS_ERROR, true)); 
                                 dispatch(setReducer(EVENTS, [])); 
+                                dispatch(setReducer(EVENTS_ERROR, true)); 
                             }
                         })
                         .catch( error => {
-                            dispatch(setReducer(EVENTS_ERROR, true)); 
                             dispatch(setReducer(EVENTS, [])); 
+                            dispatch(setReducer(EVENTS_ERROR, true)); 
                         });
 ;
     }
@@ -55,8 +53,8 @@ export function populateArtist(){
     obj.artist = window.localStorage.getItem(ARTIST);
     obj.events = window.localStorage.getItem(EVENTS);
     return dispatch => {
-        dispatch(setReducer(ARTIST, obj.artist)); 
-        dispatch(setReducer(EVENTS, obj.events)); 
+        dispatch(setReducer(ARTIST, JSON.parse(obj.artist))); 
+        dispatch(setReducer(EVENTS, JSON.parse(obj.events))); 
     }
 }
 
@@ -65,12 +63,6 @@ export function setReducer(type, data){
 		type: type,
 		data: data
 	}
-}
-
-function adjustName(name){
-    name = name.replace(/\s+/, ""); //Removing spaces
-    name = name.toLowerCase();
-    return name;
 }
 
 function setStorage(name, value){
