@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import shallowCompare from 'react-addons-shallow-compare';
-import { getArtist, populateArtist, setReducer, ARTIST_ERROR, EVENTS_ERROR } from "../actions/ArtistActions";
+import { getArtist, populateArtist, setReducer, getJSONStorage, ARTIST, ARTIST_ERROR, EVENTS_ERROR } from "../actions/ArtistActions";
 import swal from 'sweetalert';
 
 class Header extends Component {
@@ -30,12 +30,11 @@ class Header extends Component {
 	findArtist(e){
         e.preventDefault();
 		let name = this.state.artistName;
-		let cacheArtist = window.localStorage.getItem("ARTIST");
+		let cacheArtist = getJSONStorage(ARTIST);
         if(name){
             let {dispatch} = this.props;
-            if(cacheArtist){
-                let artist = JSON.parse(cacheArtist);
-                if(artist.name.toLowerCase() == name.toLowerCase()){
+            if(cacheArtist && cacheArtist.searchedName){
+                if(cacheArtist.searchedName.toLowerCase() == name.toLowerCase()){
                     dispatch(populateArtist());
                 } else {
                     dispatch(getArtist(name));

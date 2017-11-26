@@ -12,9 +12,9 @@ export function getArtist(artistName){
     return dispatch => { request.get( url + 'artists/' + artistName + '?app_id=' + app_id)
                         .then( response =>{ 
                             if(response.data.name){
-                                setStorage(ARTIST, JSON.stringify(response.data))
-                                dispatch(setReducer(ARTIST, response.data)); 
-                                window.localStorage.removeItem('EVENTS');
+                                saveArtistOnCache(response.data, artistName);
+                                dispatch(setReducer(ARTIST, response.data));
+                                removeStorage(EVENTS);
                                 if(response.data.upcoming_event_count > 0){
                                     dispatch(getEventsArtist(response.data.name));
                                 }
@@ -45,17 +45,18 @@ export function getEventsArtist(artistName){
                             dispatch(setReducer(EVENTS, [])); 
                             dispatch(setReducer(EVENTS_ERROR, true)); 
                         });
-;
     }
 }
 
+function saveArtistOnCache(artist, searchedName){
+    artist["searchedName"] = searchedName;
+    setStorage(ARTIST, JSON.stringify(artist))
+}
+
 export function populateArtist(){
-    let obj = new Object();
-    obj.artist = window.localStorage.getItem(ARTIST);
-    obj.events = window.localStorage.getItem(EVENTS);
     return dispatch => {
-        dispatch(setReducer(ARTIST, JSON.parse(obj.artist))); 
-        dispatch(setReducer(EVENTS, JSON.parse(obj.events))); 
+        dispatch(setReducer(ARTIST, getJSONStorage(ARTIST)));
+        dispatch(setReducer(EVENTS, getJSONStorage(EVENTS)));
     }
 }
 
@@ -66,6 +67,23 @@ export function setReducer(type, data){
 	}
 }
 
-function setStorage(name, value){
+export function setStorage(name, value){
 	window.localStorage.setItem(name, value);
+}
+
+export function getStorage(name){
+    return window.localStorage.getItem(name);
+}
+
+export function getJSONStorage(name){
+    let item = getStorage(name);
+    if(item){
+        return JSON.parse(item);
+    }
+
+    return {}
+}
+
+export function removeStorage(name){
+    window.localStorage.removeItem(name);
 }
