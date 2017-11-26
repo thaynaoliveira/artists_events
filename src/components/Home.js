@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import shallowCompare from 'react-addons-shallow-compare';
 import Header from './Header';
+import Footer from './Footer';
 import MockupInfo from './MockupInfo';
 import Artist from './Artist';
 
@@ -14,6 +15,7 @@ class Home extends Component {
 					<Artist/> : 
 					<MockupInfo/> 
 				}
+				<Footer/>
 			</div>		
 		);
 	}

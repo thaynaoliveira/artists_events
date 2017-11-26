@@ -26,10 +26,7 @@ class Artist extends Component {
             <div className="background-grey p-30">
                 <div className="row">
                     <div className="col-md-offset-1 col-md-2 col-sm-4 col-xs-12 text-center purple-border-content">
-                        { this.props.artist.thumb_url ? 
-                            <img src={this.props.artist.thumb_url} className="artist-avatar"/> : 
-                            <img src="/img/avatar.png" className="artist-avatar"/>
-                        }
+                        <img src={this.props.artist.thumb_url} className="artist-avatar"/>
                         <div className="artist-info">
                             <p>{this.props.artist.name}</p>
                             {this.props.artist.facebook_page_url ? 

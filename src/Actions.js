@@ -6,7 +6,7 @@ export const ARTIST_ERROR = 'ARTIST_ERROR';
 export const EVENTS_ERROR = 'EVENTS_ERROR';
 
 const url = 'https://rest.bandsintown.com/';
-const app_id = 'test';
+const app_id = 'artistsandevents';
 
 export function getArtist(artistName){
     return dispatch => { request.get( url + 'artists/' + artistName + '?app_id=' + app_id)

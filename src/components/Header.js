@@ -61,7 +61,7 @@ class Header extends Component {
 
     render() {
         return (
-            <div className="background-header flex-300">
+            <div className="background-header flex-350">
                 <div className="row">
                     <div className="col-md-offset-2 col-md-8 col-sm-12 col-xs-12 text-center">
                         <div className="header-presentation">
