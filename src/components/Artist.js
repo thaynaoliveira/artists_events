@@ -41,15 +41,15 @@ class Artist extends Component {
                         </div>
                     </div>
                     <div className="col-md-8 col-sm-8 col-xs-12 p-0">
-                        {this.props.events && this.props.events.length > 0 ?
+                        {this.props.artist.upcoming_event_count > 0 && this.props.events ?
                             <div className="events">
-                                <h4 className="txt-purple m-0">Upcoming Events</h4>
+                                <h4 className="txt-purple m-0">Upcoming Events ({this.props.artist.upcoming_event_count})</h4>
                                 <div className="event-list">
                                     {this.props.events.map( (item, index) => 
                                         <EventItem item={item} key={item.id} index={index} />
                                     )}
                                 </div>
-                                {this.props.events.length > 10 ? 
+                                {this.props.artist.upcoming_event_count > 10 ? 
                                     <div>
                                         <button className="btn btn-purple btn-block btn-show-all" id="show-all-events" onClick={(e) => this.showAll(e)}>Show all</button>
                                     </div>
@@ -57,7 +57,7 @@ class Artist extends Component {
                             </div>
                             :
                             <div className="events">
-                                <h4 className="m-0">Any events found!</h4>
+                                <h4 className="m-0">No events found.</h4>
                             </div>
                         }
                     </div>

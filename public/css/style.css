@@ -93,6 +93,7 @@ footer{
 .header-presentation img{
     width: 60px;
     margin-bottom: 8px;
+    margin-right: 10px;
 }
 
 .events{
@@ -108,6 +109,8 @@ footer{
     border-bottom: 1px solid #7F007F;
     padding: 5px;
     min-height: 45px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .event-item span{
@@ -139,6 +142,10 @@ footer{
     background-color: #f3f3f3;
 }
 
+.mockup-info img{
+    margin: 0 auto;
+}
+
 .mockup-info span{
     font-size: 16px;
 }
@@ -151,7 +158,6 @@ footer{
 .header-presentation span{
     font-size: 24px;
     color: white;
-    margin-left: 10px;
     vertical-align: bottom;
 }
 
@@ -209,6 +215,24 @@ footer{
         bottom: -120px;    
     }
 
+    .flex-250{
+        height: 180px;
+    }
+    
+    .mockup-info, .header-presentation{
+        text-align: center;
+    }
+
+    .header-presentation img{
+        width: 50px;
+        display: block;
+        margin: 10px auto;
+    }
+
+    .header-presentation span{
+        font-size: 18px;
+        margin-left: 0px;
+    }
     .btn-tickets{
         display: block !important;
         width: 100%;
@@ -219,8 +243,12 @@ footer{
         padding: 0px;
     }
 
-    .event-item span{
+    .event-item{
         display: inline-block;
+        width: 100%;
+    }
+    .event-item span{
+        display: block;
         border: 0px;
     }
     

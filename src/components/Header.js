@@ -65,8 +65,7 @@ class Header extends Component {
                 <div className="row">
                     <div className="col-md-offset-2 col-md-8 col-sm-12 col-xs-12 text-center">
                         <div className="header-presentation">
-                            <img src="/img/icon/white-logo.svg"/>
-                            <span>The easiest way to find your favorite artists and their events!</span>
+                            <span><img src="/img/icon/white-logo.svg"/>The easiest way to find your favorite artists and their events!</span>
                         </div>
                         <div className="form-inline">
                             <div className="form-group m-10">

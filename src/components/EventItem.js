@@ -37,11 +37,12 @@ export default class Artist extends Component {
     render() {
         return (
             <div className={`event-item ${this.props.index > 10 ? 'event-hidden' : ''}`}>
+                <div>
                 <span className="date-border">{this.handleDate(this.props.item.datetime)}</span>
                 <span>{this.props.item.venue.name} - {this.props.item.venue.city}, {this.props.item.venue.region ? this.props.item.venue.region + '/' : '' }{this.props.item.venue.country}
                     <img src="/img/icon/maps.png" width="22px" className="cursor" onClick={(e) => this.openMaps(e, this.props.item.venue)} />
                 </span>
-                
+                </div>
                 { this.props.item.offers.length ? 
                     <button className="btn btn-purple pull-right btn-tickets" onClick={(e) => this.openTickets(e, this.props.item)} disabled={this.props.item.offers[0].status !== 'available'}>Buy tickets</button>
                 : null}

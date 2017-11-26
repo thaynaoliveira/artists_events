@@ -13,9 +13,11 @@ export function getArtist(artistName){
                         .then( response =>{ 
                             if(response.data.name){
                                 setStorage(ARTIST, JSON.stringify(response.data))
-                                setStorage(ARTIST, JSON.stringify(response.data))
                                 dispatch(setReducer(ARTIST, response.data)); 
-                                dispatch(getEventsArtist(response.data.name));
+                                window.localStorage.removeItem('EVENTS');
+                                if(response.data.upcoming_event_count > 0){
+                                    dispatch(getEventsArtist(response.data.name));
+                                }
                             } else {
                                 dispatch(setReducer(ARTIST_ERROR, true)); 
                                 dispatch(setReducer(ARTIST, {})); 
@@ -33,7 +35,6 @@ export function getEventsArtist(artistName){
                         .then( response =>{ 
                             if(response.data.length > 0){
                                 setStorage(EVENTS, JSON.stringify(response.data));
-                                window.localStorage.removeItem('EVENTS');
                                 dispatch(setReducer(EVENTS, response.data)); 
                             } else {
                                 dispatch(setReducer(EVENTS, [])); 
