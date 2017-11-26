@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import shallowCompare from 'react-addons-shallow-compare';
-import { getArtist, populateArtist, setReducer, ARTIST_ERROR, EVENTS_ERROR } from "../Actions";
+import { getArtist, populateArtist, setReducer, ARTIST_ERROR, EVENTS_ERROR } from "../actions/ArtistActions";
 import swal from 'sweetalert';
 
 class Header extends Component {

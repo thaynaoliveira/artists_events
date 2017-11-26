@@ -1,7 +1,7 @@
 import { EVENTS,
 		 ARTIST,
 		 ARTIST_ERROR,
-		 EVENTS_ERROR } from './Actions';
+		 EVENTS_ERROR } from '../actions/ArtistActions';
 
 const initialState = {
 	artist: {},

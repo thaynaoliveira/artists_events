@@ -11,10 +11,10 @@
 import  React, { Component } from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
-import App from '../App';
+import App from '../containers/App';
 import Home from './Home';
 import PageNotFound from './PageNotFound';
-import todoApp from '../Reducer';
+import todoApp from '../reducers/Reducer';
 import { createStore, applyMiddleware  } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
