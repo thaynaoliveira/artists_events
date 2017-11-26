@@ -43,10 +43,10 @@ class Artist extends Component {
                                 <h4 className="txt-purple m-0">Upcoming Events ({this.props.artist.upcoming_event_count})</h4>
                                 <div className="event-list">
                                     {this.props.events.map( (item, index) => 
-                                        <EventItem item={item} key={item.id} index={index} />
+                                        <EventItem item={item} key={item.id} index={index} maxItemsToShowFirst={7} />
                                     )}
                                 </div>
-                                {this.props.artist.upcoming_event_count > 10 ? 
+                                {this.props.artist.upcoming_event_count >= 7 ?
                                     <div>
                                         <button className="btn btn-purple btn-block btn-show-all" id="show-all-events" onClick={(e) => this.showAll(e)}>Show all</button>
                                     </div>
