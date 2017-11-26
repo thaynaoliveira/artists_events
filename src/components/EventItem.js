@@ -40,7 +40,7 @@ export default class Artist extends Component {
                 <div>
                 <span className="date-border">{this.handleDate(this.props.item.datetime)}</span>
                 <span>{this.props.item.venue.name} - {this.props.item.venue.city}, {this.props.item.venue.region ? this.props.item.venue.region + '/' : '' }{this.props.item.venue.country}
-                    <img src="/img/icon/maps.png" width="22px" className="cursor" onClick={(e) => this.openMaps(e, this.props.item.venue)} />
+                    <img src="/img/icon/maps.png" width="22px" title="See it on Google Maps" alt="See it on Google Maps" className="cursor" onClick={(e) => this.openMaps(e, this.props.item.venue)} />
                 </span>
                 </div>
                 <button className="btn btn-purple pull-right btn-tickets" onClick={(e) => this.openTickets(e, this.props.item)} disabled={this.props.item.offers.length == 0 || (this.props.item.offers.length > 0 && this.props.item.offers[0].status !== 'available') }>Buy tickets</button>
