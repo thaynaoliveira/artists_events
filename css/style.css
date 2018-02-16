@@ -1,0 +1,273 @@
+html { 
+    height:100%;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body { 
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+html, body{
+	padding: 0px;
+	margin: 0px;
+}
+
+header{
+
+}
+
+footer{
+    position: absolute;
+    right: 0;
+    bottom: -95px;
+    left: 0;
+    min-height: 75px;
+}
+
+.p-0{ padding: 0px !important; }
+.p-10{ padding: 10px !important; }
+.p-20{ padding: 20px !important; }
+.p-30{ padding: 30px !important; }
+.p-40{ padding: 40px !important; }
+.p-50{ padding: 50px !important; }
+.p-60{ padding: 60px !important; }
+.p-70{ padding: 70px !important; }
+.p-80{ padding: 80px !important; }
+.p-90{ padding: 90px !important; }
+.m-0{ margin: 0px !important; }
+.m-10{ margin: 10px !important; }
+.m-20{ margin: 20px !important; }
+.m-30{ margin: 30px !important; }
+.m-40{ margin: 40px !important; }
+.m-50{ margin: 50px !important; }
+.m-60{ margin: 60px !important; }
+.m-70{ margin: 70px !important; }
+.m-80{ margin: 80px !important; }
+.m-90{ margin: 90px !important; }
+
+.table-container{
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+.flex-350, .flex-250{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    resize: vertical;
+}
+
+.flex-350{
+    height: 350px;
+}
+
+.flex-250{
+    height: 250px;
+}
+
+.btn{
+    padding: 6px 20px !important;
+}
+
+.txt-purple{
+    color: #7F007F;
+}
+
+.header-presentation img{
+    width: 60px;
+    margin-bottom: 8px;
+    margin-right: 10px;
+}
+
+.events{
+    padding: 0 15px;
+}
+
+.event-list{
+    margin-top: 10px;
+}
+
+.event-item{
+    background-color: white;
+    border-bottom: 1px solid #7F007F;
+    padding: 5px;
+    min-height: 45px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.event-item span{
+    margin-top: 3px;
+}
+
+.event-item img{
+    margin-left: 5px;
+}
+
+.event-hidden{
+    display: none;
+}
+
+.btn-show-all{
+    margin-top: 10px;
+}
+
+.date-border{
+    border-right: 1px solid #7F007F;
+    padding-right: 5px;
+    margin-right: 5px;
+    padding: 5px 5px 5px 0px;
+    width: 100px;
+    display: inline-block;
+}
+
+.mockup-info, .background-grey{
+    background-color: #f3f3f3;
+}
+
+.mockup-info img{
+    margin: 0 auto;
+}
+
+.mockup-info span{
+    font-size: 16px;
+}
+
+.mockup-info p{
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.header-presentation span{
+    font-size: 24px;
+    color: white;
+    vertical-align: bottom;
+}
+
+.purple-border-content{
+    border: 1px solid #7F007F;
+    padding:0px !important;
+}
+
+.artist-avatar{
+    width: 100%;
+}
+
+.artist-info{
+    background-color: white;
+    padding: 10px;
+}
+
+.artist-info img{
+    width: 18px;
+    border-radius: 0px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.artist-info span{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.artist-info p{
+    color: #444;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.btn-purple, .swal-button{
+    background-color: #7F007F !important;
+    color: white;
+}
+
+.btn-purple:hover, .btn-purple:focus, .btn-purple.focus, .swal-button:hover, .swal-button:focus, .swal-button.focus{
+    background-color: #CB00CB !important;
+}
+
+.background-header{
+    background: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.footer{
+    color: white;
+    background-color: #3F003F;
+    padding: 20px 10px;
+}
+
+.footer img{
+    width: 50px;
+}
+
+.inline{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    footer{
+        bottom: -120px;    
+    }
+
+    .flex-250{
+        height: 180px;
+    }
+    
+    .mockup-info, .header-presentation{
+        text-align: center;
+    }
+
+    .header-presentation img{
+        width: 50px;
+        display: block;
+        margin: 10px auto;
+    }
+
+    .header-presentation span{
+        font-size: 18px;
+        margin-left: 0px;
+    }
+    .btn-tickets{
+        display: block !important;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .events{
+        padding: 0px;
+    }
+
+    .event-item{
+        display: inline-block;
+        width: 100%;
+    }
+    .event-item span{
+        display: block;
+        border: 0px;
+    }
+    
+    .purple-border-content{
+        margin-bottom: 10px;
+    }
+}
